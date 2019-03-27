@@ -1,13 +1,17 @@
 <template lang="pug">
-  v-app
-    v-content
-      router-view
+
+  
 </template>
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
-
-  @Component
-  export default class App extends Vue {
+  
+  
+  @Component()
+  export default class GroupSetting extends Vue {
   }
 </script>
+
+<style scoped lang="stylus">
+
+</style>
