@@ -1,6 +1,7 @@
 <template lang="pug">
   .register
-    v-layout()
+    v-layout(row wrap)
+      h2 グループ登録
 </template>
 
 <script lang="ts">

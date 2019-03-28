@@ -12,3 +12,8 @@ interface Group {
   tags: string[] // タグ
   createdAt: Timestamp // 設立日
 }
+
+interface UserData {
+  vrchatId: string
+  ownerGroups: string[]
+}

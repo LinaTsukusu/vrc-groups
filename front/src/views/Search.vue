@@ -7,7 +7,7 @@
   import {Component, Vue} from 'vue-property-decorator'
   
   
-  @Component()
+  @Component
   export default class Search extends Vue {
   }
 </script>
