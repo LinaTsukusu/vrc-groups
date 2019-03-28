@@ -8,7 +8,7 @@
   
   
   @Component
-  export default class Search extends Vue {
+  export default class SearchView extends Vue {
   }
 </script>
 

@@ -1,7 +1,5 @@
 <template lang="pug">
-  .register
-    v-layout(row wrap)
-      h2 グループ登録
+
 </template>
 
 <script lang="ts">
@@ -9,7 +7,7 @@
   
   
   @Component
-  export default class RegisterGroup extends Vue {
+  export default class RegisterView extends Vue {
   }
 </script>
 

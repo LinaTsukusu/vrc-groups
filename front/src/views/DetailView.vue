@@ -7,8 +7,8 @@
   import {Component, Vue} from 'vue-property-decorator'
   
   
-  @Component()
-  export default class GroupDetail extends Vue {
+  @Component
+  export default class DetailView extends Vue {
   }
 </script>
 
