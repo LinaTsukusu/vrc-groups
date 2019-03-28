@@ -11,19 +11,19 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import('@/views/About.vue'),
+      component: () => import('@/views/AboutView.vue'),
     },
 
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/Login.vue'),
+      component: () => import('@/views/LoginView.vue'),
     },
 
     {
       path: '/register',
       name: 'register',
-      component: () => import('@/views/Register.vue'),
+      component: () => import('@/views/RegisterView.vue'),
       beforeEnter(to, from, next) {
         if (!store.state.user) {
           next({path: '/login', params: {to: to.path}})
@@ -36,25 +36,25 @@ export default new Router({
     {
       path: '/search',
       name: 'search',
-      component: () => import('@/views/Search.vue'),
+      component: () => import('@/views/SearchView.vue'),
     },
 
     {
       path: '/detail/:id',
       name: 'detail',
-      component: () => import('@/views/Detail.vue'),
+      component: () => import('@/views/DetailView.vue'),
     },
 
     {
-      path: '/setting',
+      path: '/setting/:id',
       name: 'setting',
-      component: () => import('@/views/Setting.vue'),
+      component: () => import('@/views/SettingView.vue'),
       beforeEnter(to, from, next) {
         const user = store.state.user
         const userData = store.state.userData
         if (!user) {
           next({path: '/login', params: {to: to.path}})
-        } else if (userData!.ownerGroups.length === 0) {
+        } else if (userData!.ownerGroups.includes(to.params.id)) {
           next({path: '/'})
         } else {
           next()
