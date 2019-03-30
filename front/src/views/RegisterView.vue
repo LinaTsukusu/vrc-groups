@@ -7,6 +7,8 @@
   import {Component, Vue} from 'vue-property-decorator'
   import firebase from 'firebase/app'
   import Register from '@/components/Register.vue'
+
+
   @Component({
     components: {Register}
   })

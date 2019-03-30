@@ -25,6 +25,7 @@
   import {Component, Vue} from 'vue-property-decorator'
   import Login from '@/components/Login.vue'
   import firebase from 'firebase/app'
+  import 'firebase/firestore'
 
   @Component({
     components: {Login},
