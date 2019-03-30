@@ -1,6 +1,5 @@
 <template lang="pug">
   .login
-    h1 login
     #firebaseui-auth
 </template>
 
@@ -14,9 +13,8 @@
   @Component
   export default class Login extends Vue {
     private mounted() {
-      console.log('aaa')
       const ui = new firebaseui.auth.AuthUI(firebase.auth())
-      ui.start('firebaseui-auth', {
+      ui.start('#firebaseui-auth', {
         signInSuccessUrl: this.$route.params.to,
         signInOptions: [
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
