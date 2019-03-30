@@ -5,6 +5,7 @@
       v-spacer
       v-toolbar-items
         v-btn(v-if="!$store.getters.userId" flat @click="showLogin") Login
+        v-btn(v-else flat @click="$router.push({path: '/register'})") グループ新規登録
 
     v-content
       router-view(@login="showLogin")
