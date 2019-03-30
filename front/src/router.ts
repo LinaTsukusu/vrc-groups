@@ -53,7 +53,7 @@ export default new Router({
         const user = store.state.user
         const userData = store.state.userData
         if (!user) {
-          next({path: '/login', params: {to: to.path}})
+          next({path: '/login', params: {to: to.path || '/'}})
         } else if (userData!.ownerGroups.includes(to.params.id)) {
           next({path: '/'})
         } else {

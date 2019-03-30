@@ -1,5 +1,6 @@
 <template lang="pug">
   v-app
+    h1 vrc groups
     v-content
       router-view
 </template>
