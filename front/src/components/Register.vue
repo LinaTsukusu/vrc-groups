@@ -58,7 +58,7 @@
     private date = new Date().toISOString().substr(0, 10)
 
     private rules = {
-      required: (value: string) => !!value || '必須項目'
+      required: (value: string) => !!value || '必須項目',
     }
 
     private alert = {

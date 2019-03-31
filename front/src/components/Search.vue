@@ -17,11 +17,13 @@
           template(v-for="(group, index) in groups")
             v-list-tile(:key="group.name" avatar @click="showDetail")
               v-list-tile-avatar(size="64")
-                img(:src="group.thumbnailUrl")
+                img(v-if="group.thumbnailUrl" :src="group.thumbnailUrl")
+                v-icon(v-else large) account_circle
               v-list-tile-content
                 v-list-tile-title(v-html="group.name")
                 v-list-tile-sub-title
                   v-chip(v-for="tag in group.tags") {{tag}}
+            v-divider(v-if="index + 1 < groups.length")
 </template>
 
 <script lang="ts">

@@ -10,7 +10,7 @@
 
 
   @Component({
-    components: {Register}
+    components: {Register},
   })
   export default class RegisterView extends Vue {
     private isLoggedIn = false

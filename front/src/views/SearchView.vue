@@ -7,7 +7,7 @@
   import {Component, Vue} from 'vue-property-decorator'
   import Search from '@/components/Search.vue'
   @Component({
-    components: {Search}
+    components: {Search},
   })
   export default class SearchView extends Vue {
     private mounted() {

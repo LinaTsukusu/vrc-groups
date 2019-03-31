@@ -38,7 +38,7 @@
     private isDarkMode = false
 
     private created() {
-      this.isDarkMode = window.localStorage.darkMode == 'true'
+      this.isDarkMode = window.localStorage.darkMode === 'true'
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
