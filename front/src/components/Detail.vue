@@ -1,8 +1,10 @@
 <template lang="pug">
   .detail
     v-card
-      v-card-title.headline.grey.lighten-2(primary-title)
-        v-avatar(size="48px"): img(:src="group.thumbnailUrl")
+      v-card-title.headline.lighten-2(primary-title)
+        v-avatar(size="48px")
+          img(v-if="group.thumbnailUrl" :src="group.thumbnailUrl")
+          v-icon(v-else large) group
         span {{group.name}}
       v-card-text
         v-container(grid-list-md)

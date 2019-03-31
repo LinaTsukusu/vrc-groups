@@ -7,7 +7,7 @@
 
     v-dialog(v-model="confirmDialog" width="800")
       v-card
-        v-card-title.headline.grey.lighten-2(primary-title) アカウント削除
+        v-card-title.headline.lighten-2(primary-title) アカウント削除
         v-card-text
           v-layout(justify-center row wrap)
             v-flex(xs12)

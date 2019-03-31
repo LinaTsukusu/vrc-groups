@@ -46,12 +46,12 @@
 
     v-dialog(v-if="!$store.getters.userId" v-model="loginDialog" width="500")
       v-card
-        v-card-title.headline.grey.lighten-2(primary-title) Login
+        v-card-title.headline.lighten-2(primary-title) Login
         v-card-text
           login
     v-dialog(v-if="$store.state.user" v-model="editDialog" width="500")
       v-card
-        v-card-title.headline.grey.lighten-2(primary-title) ユーザ情報編集
+        v-card-title.headline.lighten-2(primary-title) ユーザ情報編集
         v-card-text
           setting-user
 </template>
