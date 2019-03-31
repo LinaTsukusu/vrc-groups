@@ -54,7 +54,6 @@
     }
 
     private searchGroup() {
-      console.log('search')
       if (this.search) {
         this.displayList = this.groups.filter((s) => {
           return s.name.includes(this.search)
