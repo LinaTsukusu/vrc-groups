@@ -1,7 +1,7 @@
 <template lang="pug">
   .search
     v-layout(justify-center row wrap)
-      v-flex(xs6)
+      v-flex(xs11 lg6)
         v-text-field(
           v-model="search"
           append-outer-icon="search"
@@ -12,7 +12,7 @@
           @click:append-outer="searchGroup"
           @click:clear="clearSearch"
           )
-      v-flex(xs10)
+      v-flex(xs12 lg10)
         v-list(v-if="groups" two-line)
           template(v-for="(group, index) in groups")
             v-list-tile(:key="group.name" avatar @click="showDetail")

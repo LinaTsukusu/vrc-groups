@@ -1,20 +1,23 @@
 <template lang="pug">
-  v-app
-    v-toolbar
-      v-toolbar-title VRC Groups
+  v-app(:dark="isDarkMode")
+    v-toolbar(dark dense)
+      v-toolbar-title.title
+        router-link(tag="div" to="/") VRC Groups
       v-spacer
       v-toolbar-items
         v-btn(v-if="!$store.getters.userId" flat @click="showLogin") Login
         v-btn(v-else flat @click="$router.push({path: '/register'})") グループ新規登録
+        v-btn(flat icon @click="toggleMode")
+          v-icon brightness_2
 
     v-content
       router-view(@login="showLogin")
 
-    v-footer
+    v-footer(dark)
       v-layout(justify-center row wrap)
-        v-flex(primary lighten-2 py-3 text-xs-center white--text xs12) &copy;2019 - LinaTsukusu
+        v-flex(lighten-2 py-1 text-xs-center white--text xs12) &copy;2019 - LinaTsukusu
 
-    v-dialog(v-if="!$store.getters.userId" v-model="loginDialog" width="50vw")
+    v-dialog(v-if="!$store.getters.userId" v-model="loginDialog" width="500")
       v-card
         v-card-title.headline.grey.lighten-2(primary-title) Login
         v-card-text
@@ -32,8 +35,11 @@
   })
   export default class App extends Vue {
     private loginDialog = false
+    private isDarkMode = false
 
     private created() {
+      this.isDarkMode = window.localStorage.darkMode == 'true'
+
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           this.$store.commit('setUser', user)
@@ -49,5 +55,15 @@
     private showLogin(url: string) {
       this.loginDialog = true
     }
+
+    private toggleMode() {
+      this.isDarkMode = !this.isDarkMode
+      window.localStorage.setItem('darkMode', this.isDarkMode.toString())
+    }
   }
 </script>
+
+<style scoped lang="stylus">
+  .title
+    cursor pointer
+</style>
