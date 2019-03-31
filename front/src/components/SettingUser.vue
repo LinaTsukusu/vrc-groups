@@ -33,12 +33,6 @@
     }
     private confirmDialog = false
 
-    private vrchatId = ''
-
-    private mounted() {
-      this.vrchatId = this.$store.state.userData.vrchatId
-    }
-
     private showAlert(success: boolean, message: string) {
       if (success) {
         this.alert.type = 'success'

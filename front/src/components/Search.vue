@@ -15,7 +15,7 @@
       v-flex(xs12 lg10)
         v-list(v-if="groups" two-line)
           template(v-for="(group, index) in groups")
-            v-list-tile(:key="group.name" avatar @click="showDetail")
+            v-list-tile(:key="group.name" avatar @click="showDetail(group)")
               v-list-tile-avatar(size="64")
                 img(v-if="group.thumbnailUrl" :src="group.thumbnailUrl")
                 v-icon(v-else large) group
@@ -24,18 +24,22 @@
                 v-list-tile-sub-title
                   v-chip(v-for="tag in group.tags") {{tag}}
             v-divider(v-if="index + 1 < groups.length")
+    v-dialog(v-if="selected" v-model="selected" width="800")
+      detail(:group="selected")
 </template>
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
   import firebase from 'firebase/app'
   import 'firebase/firestore'
-
-  
-  @Component
+  import Detail from '@/components/Detail.vue'
+  @Component({
+    components: {Detail},
+  })
   export default class Search extends Vue {
     private groups: Group[] = []
     private search = ''
+    private selected: Group | null = null
 
     private mounted() {
       firebase.firestore().collection('groups').onSnapshot((snapshot) => {
@@ -52,7 +56,7 @@
     }
 
     private showDetail(group: Group) {
-
+      this.selected = group
     }
   }
 </script>
