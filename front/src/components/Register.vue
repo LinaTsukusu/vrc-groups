@@ -1,5 +1,6 @@
 <template lang="pug">
   .register
+    v-alert(v-model="alert.show" :type="alert.type" dismissible) {{alert.message}}
     v-container(text-xs-center grid-list-md)
       v-form(v-model="form")
         h2.display-1 グループ登録
@@ -60,6 +61,12 @@
       required: (value: string) => !!value || '必須項目'
     }
 
+    private alert = {
+      show: false,
+      type: 'success',
+      message: '登録完了',
+    }
+
     private group: Group = {
       name: '',
       bio: '',
@@ -73,11 +80,35 @@
     }
 
     private async registerGroup() {
-      console.log(this.group)
-      console.log(this.form)
       if (this.form) {
-        await firebase.firestore().collection(DB.groups).add(this.group)
+        const firestore = firebase.firestore()
+        const result = await firestore.collection(DB.groups).add(this.group)
+        let userData = this.$store.state.userData as UserData
+        if (userData) {
+          userData.editorGroups.push(result.id)
+          await firestore.collection(DB.userdata).doc(this.$store.getters.userId)
+            .update({editorGroups: userData.editorGroups})
+        } else {
+          userData = {
+            vrchatId: '',
+            editorGroups: [result.id],
+          }
+          await firestore.collection(DB.userdata).doc(this.$store.getters.userId)
+            .set(userData)
+        }
+      }
+      this.showAlert(this.form)
+    }
 
+    private showAlert(success: boolean) {
+      if (success) {
+        this.alert.type = 'success'
+        this.alert.message = '登録完了'
+        this.alert.show = true
+      } else {
+        this.alert.type = 'error'
+        this.alert.message = '入力に不備があります'
+        this.alert.show = true
       }
     }
 
