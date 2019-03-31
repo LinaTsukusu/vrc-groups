@@ -14,6 +14,5 @@ interface Group {
 }
 
 interface UserData {
-  vrchatId: string
   editorGroups: string[]
 }

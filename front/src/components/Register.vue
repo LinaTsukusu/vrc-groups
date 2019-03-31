@@ -47,7 +47,7 @@
 
 <script lang="ts">
   import {Component, Vue, Watch} from 'vue-property-decorator'
-  import firebase from 'firebase'
+  import firebase from 'firebase/app'
   import 'firebase/firestore'
   import {DB} from '@/enum/db'
 
@@ -90,7 +90,6 @@
             .update({editorGroups: userData.editorGroups})
         } else {
           userData = {
-            vrchatId: '',
             editorGroups: [result.id],
           }
           await firestore.collection(DB.userdata).doc(this.$store.getters.userId)
