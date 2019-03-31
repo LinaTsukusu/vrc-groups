@@ -27,9 +27,9 @@ export default new Router({
     },
 
     {
-      path: '/setting/:id',
-      name: 'setting',
-      component: () => import('@/views/SettingView.vue'),
+      path: '/edit/:id',
+      name: 'edit',
+      component: () => import('@/views/EditView.vue'),
     },
   ],
 })
